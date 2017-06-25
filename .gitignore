@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# raw data
+raw_data/frames_per_day/
+
+# ignore pickel data
+*.pkl

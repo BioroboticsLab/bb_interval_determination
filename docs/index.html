@@ -1,45 +1,14 @@
-<html>
-
-<head>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-    google.charts.load('current', {
-      'packages': ['timeline']
-    });
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-
-      // Define the path to the json file whicht holds the data.
-      var JSON_PATH = 'data.json'
-      var myRequest = new Request(JSON_PATH);
-
-      fetch(myRequest)
-        .then(response => response.json())
-        .then(function(json) {
-          var container = document.getElementById('timeline-tooltip');
-          var chart = new google.visualization.Timeline(container);
-          var data = new google.visualization.DataTable(json);
-          var options = {
-            timeline: {
-              colorByRowLabel: false,
-            },
-            tooltip: {isHtml: true},
-            avoidOverlappingGridLines: false,
-            colors: ['#4b4141', '#c8c664'],
-            'width': 8000,
-            'height': 600,
-            forceIFrame: true,
-          };
-
-          chart.draw(data, options);
-        });
-    }
-  </script>
-</head>
-
-<body>
-  <div id="timeline-tooltip" style="max-width=400px; overflow-x:scroll"></div>
-</body>
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <ul>
+      <li><a href="overall/overall_timeline.html">overall Googletimeline</a></li>
+    </ul>
+  </body>
 </html>
