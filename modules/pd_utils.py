@@ -1,6 +1,8 @@
+import ast
 import os
 
 import iso8601
+import numpy as np
 import pandas as pd
 
 
@@ -30,3 +32,17 @@ def extract_metadata_videoname(basename):
     series = pd.Series([id_int, start_ts, end_ts],
                        index=['cam_id', 'start_ts', 'end_ts'])
     return series
+
+def str_to_numpy(string_array):
+    """Convert string of array to a numpy array.
+
+    >>> str_to_numpy('[[1,2],[3,4]]')
+    array([[1, 2],
+           [3, 4]])
+    >>> type(str_to_numpy('[[1,2],[3,4]]'))
+    <class 'numpy.ndarray'>
+    """
+    if pd.isnull(string_array):
+        return(np.NaN)
+    else:
+        return np.array(ast.literal_eval(string_array))
