@@ -107,8 +107,18 @@ class Application(tk.Frame):
         self.go_right()
 
 
-path = 'raw_data/02_frames_per_day/2016/cam_1'
-csv_out_path = 'derived_data/02_man_marked_moved_frames/manuel_Cam_1.csv'
+path = 'raw_data/02_frames_per_day/2016/cam_0'
+csv_out_path = 'derived_data/02_man_marked_moved_frames/manuel_Cam_0.csv'
+
+# path = 'raw_data/02_frames_per_day/2016/cam_1'
+# csv_out_path = 'derived_data/02_man_marked_moved_frames/manuel_Cam_1.csv'
+
+# path = 'raw_data/02_frames_per_day/2016/cam_2'
+# csv_out_path = 'derived_data/02_man_marked_moved_frames/manuel_Cam_2.csv'
+
+# path = 'raw_data/02_frames_per_day/2016/cam_3'
+# csv_out_path = 'derived_data/02_man_marked_moved_frames/manuel_Cam_4.csv'
+
 shown = 0
 curr = 0
 succ = 1
