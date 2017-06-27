@@ -33,6 +33,7 @@ def extract_metadata_videoname(basename):
                        index=['cam_id', 'start_ts', 'end_ts'])
     return series
 
+
 def str_to_numpy(string_array):
     """Convert string of array to a numpy array.
 

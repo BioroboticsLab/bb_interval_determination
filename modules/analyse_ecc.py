@@ -4,6 +4,7 @@ import pandas.util.testing as pdt
 
 import modules.pd_utils as pd_utils
 
+
 def extend_cam_id_ts(df):
     """Extend df with cam ids and timestamps.
 
