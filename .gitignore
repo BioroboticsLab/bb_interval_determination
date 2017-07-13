@@ -102,6 +102,8 @@ ENV/
 
 # raw data
 raw_data/02_frames_per_day/
+raw_data/mse_psnr_ssim/
+170704_brokenfiles.txt
 
 # ignore pickel data
 *.pkl

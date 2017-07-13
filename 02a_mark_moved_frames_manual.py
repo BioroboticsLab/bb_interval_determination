@@ -14,6 +14,7 @@ class Application(tk.Frame):
         self.switch_image()
 
     def create_widgets(self):
+
         im = Image.open(paths[curr])
         im.thumbnail((1800, 1800), Image.ANTIALIAS)
         self.img = ImageTk.PhotoImage(im)
@@ -37,6 +38,11 @@ class Application(tk.Frame):
         self.current_img["text"] = os.path.basename(paths[0])
         self.current_img.pack(side="top")
 
+        # Display Day
+        self.day_of_move = tk.Label(self, fg='red', text=0)
+        self.day_of_move["text"] = os.path.basename(paths[curr]).split('--')[1][:10]
+        self.day_of_move.pack(side="top")
+
         # grading
         self.grading_frame = tk.Frame(self)
         self.grading_frame.pack(side="bottom")
@@ -48,9 +54,16 @@ class Application(tk.Frame):
                                    fg="green", command=self.save_as_not_moved)
         self.not_moved.pack(side="left")
 
-        self.quit = tk.Button(self, text="Exit",
-                              command=root.destroy)
-        self.quit.pack(side="bottom")
+        self.exit = tk.Frame(self)
+        self.exit.pack(side="bottom")
+
+        self.quit = tk.Button(self.exit, text="Exit",
+                              command=self.exit_wo_save)
+        self.quit.pack(side="left")
+
+        self.quit = tk.Button(self.exit, fg='red', text="Exit and save",
+                              command=self.exit_save)
+        self.quit.pack(side="right")
 
         self.panel = tk.Label(self, image=self.img)
         self.panel.pack(side="top", expand="yes")
@@ -64,6 +77,7 @@ class Application(tk.Frame):
         else:
             curr = (curr + 1) % len_images
             succ = (succ + 1) % len_images
+        self.day_of_move["text"] = os.path.basename(paths[curr]).split('--')[1][:10]
 
     def go_left(self):
         global curr
@@ -74,6 +88,7 @@ class Application(tk.Frame):
         else:
             curr = (curr - 1) % len_images
             succ = (succ - 1) % len_images
+        self.day_of_move["text"] = os.path.basename(paths[curr]).split('--')[1][:10]
 
     def switch_image(self):
         global curr
@@ -106,9 +121,19 @@ class Application(tk.Frame):
         print(data[-1:])
         self.go_right()
 
+    def exit_wo_save(self):
+        global save
+        save = False
+        root.destroy()
 
-# path = 'raw_data/02_frames_per_day/2016/cam_0'
-# csv_out_path = 'derived_data/02_man_marked_moved_frames/manuel_Cam_0.csv'
+    def exit_save(self):
+        global save
+        save = True
+        root.destroy()
+
+
+path = 'raw_data/02_frames_per_day/2016/cam_0'
+csv_out_path = 'derived_data/02_man_marked_moved_frames/manuel_Cam_0.csv'
 
 # path = 'raw_data/02_frames_per_day/2016/cam_1'
 # csv_out_path = 'derived_data/02_man_marked_moved_frames/manuel_Cam_1.csv'
@@ -116,9 +141,9 @@ class Application(tk.Frame):
 # path = 'raw_data/02_frames_per_day/2016/cam_2'
 # csv_out_path = 'derived_data/02_man_marked_moved_frames/manuel_Cam_2.csv'
 
-path = 'raw_data/02_frames_per_day/2016/cam_3'
-csv_out_path = 'derived_data/02_man_marked_moved_frames/manuel_Cam_3.csv'
-
+# path = 'raw_data/02_frames_per_day/2016/cam_3'
+# csv_out_path = 'derived_data/02_man_marked_moved_frames/manuel_Cam_3.csv'
+save = False
 shown = 0
 curr = 0
 succ = 1
@@ -132,10 +157,13 @@ data = []
 root = tk.Tk()
 app = Application(master=root)
 app.mainloop()
-with open(csv_out_path, 'w') as csvfile:
-    writer = csv.writer(csvfile, delimiter=';')
-    row = ["first_frame", "second_frame", "moved"]
-    writer.writerow(row)
-    for line in data:
-        writer.writerow(line)
-print('Written to {path}'.format(path=csv_out_path))
+if save:
+    with open(csv_out_path, 'w') as csvfile:
+        writer = csv.writer(csvfile, delimiter=';')
+        row = ["first_frame", "second_frame", "moved"]
+        writer.writerow(row)
+        for line in data:
+            writer.writerow(line)
+    print('Written to {path}'.format(path=csv_out_path))
+else:
+    print('Exit without save')
