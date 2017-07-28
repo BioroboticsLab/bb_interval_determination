@@ -68,11 +68,6 @@ def get_intervalls(path, accuracy):
 
     df_prep = df.drop(['warp_matrix', 'cc', 'succ_cam_id'], axis=1)
 
-    shifted = df[['curr_img_name', 'curr_start_ts', 'curr_end_ts']].shift(1)
-    shifted.columns = ['pred_img_name', 'pred_start_ts', 'pred_end_ts']
-
-    df_ext = df_prep.merge(shifted, left_index=True, right_index=True)
-
     # `df_prep['distance']` beschreibt die Bewegung welche von `curr_start` zu `succ_start` stattgefunden hat.
 
     shifted = df[['curr_img_name', 'curr_start_ts', 'curr_end_ts']].shift(1)
@@ -81,8 +76,6 @@ def get_intervalls(path, accuracy):
     df_ext = df_prep.merge(shifted, left_index=True, right_index=True)
 
     df_selection = df_ext[(df_ext['distance'] > accuracy)]
-
-    df_ext = df_prep.merge(shifted, left_index=True, right_index=True)
 
     # calculate all intervals
     intervalle = []
