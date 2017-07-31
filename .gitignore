@@ -106,3 +106,6 @@ raw_data/mse_psnr_ssim/
 
 # ignore pickel data
 *.pkl
+
+# testing stuff
+testing_stuff.ipynb
