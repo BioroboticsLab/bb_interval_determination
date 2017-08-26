@@ -1,3 +1,5 @@
+import collections
+
 import numpy as np
 import pandas as pd
 import pandas.util.testing as pdt
@@ -81,6 +83,9 @@ def get_intervalls(path, accuracy):
     intervalle = []
     excluded = []
     start = None
+
+    interval = collections.namedtuple('interval', ['start', 'end_safe', 'end_unsafe'])
+
     for i, (index, row) in enumerate(df_selection.iterrows()):
 
         # first intervall begins with first video in year
@@ -89,22 +94,22 @@ def get_intervalls(path, accuracy):
             # start with the first video in year
             start = df_ext.loc[0]['curr_img_name']
             end = df_ext.loc[index]['pred_img_name']
-            intervalle.append((start, end))
-
-            excluded.append(df_ext.loc[index]['curr_img_name'])
+            end_unsafe = df_ext.loc[index]['curr_img_name']
+            intervalle.append(interval(start, end, end_unsafe))
 
             start = df_ext.loc[index]['succ_img_name']
 
         else:
             if (index - 1) not in df_selection.index.values:
                 end = df_ext.loc[index]['pred_img_name']
-                intervalle.append((start, end))
-
-            excluded.append(df_ext.loc[index]['curr_img_name'])
+                end_unsafe = df_ext.loc[index]['curr_img_name']
+                intervalle.append(interval(start, end, end_unsafe))
+            else:
+                excluded.append(df_ext.loc[index]['curr_img_name'])
 
             start = df_ext.loc[index]['succ_img_name']
 
             if i == len(df_selection) - 1:
                 end = df_ext.loc[max(df_ext.index.values)]['succ_img_name']
-                intervalle.append((start, end))
+                intervalle.append((start, end, '-'))
     return intervalle, excluded
