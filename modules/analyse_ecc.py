@@ -111,5 +111,5 @@ def get_intervalls(path, accuracy):
 
             if i == len(df_selection) - 1:
                 end = df_ext.loc[max(df_ext.index.values)]['succ_img_name']
-                intervalle.append((start, end, '-'))
+                intervalle.append(interval(start, end, None))
     return intervalle, excluded
