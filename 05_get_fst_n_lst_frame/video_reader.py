@@ -80,6 +80,14 @@ class VideoReader:
 
 def get_first_frame(video_path):
     video_reader = VideoReader(video_path, None)
-    img = next(video_reader)
+    first_frame = next(video_reader)
     video_reader.kill()
-    return img
+    return first_frame
+
+
+def get_last_frame(video_path):
+    video_reader = VideoReader(video_path, None)
+    for last_frame in video_reader:
+        pass
+    video_reader.kill()
+    return last_frame
