@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="de">
+
+<head>
+  <title>Timeline | Basic demo</title>
+  <meta charset="utf-8" />
+  <style type="text/css">
+    body,
+    html {
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="node_modules/vis/dist/vis.js"></script>
+  <script src="jquery-3.2.1.min.js"></script>
+  <script src="myjs.js"></script>
+  <link href="node_modules/vis/dist/vis.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Camera 2016 </h1>
+  <div id="visualization"></div>
+
+  <script type="text/javascript">
+    // DOM element where the Timeline will be attached
+    $.ajaxSetup({
+      async: false
+    });
+
+    var JSON_PATH0 = 'Cam_0_intervals_ecc.json';
+    var JSON_PATH1 = 'Cam_1_intervals_ecc.json';
+    var JSON_PATH2 = 'Cam_2_intervals_ecc.json';
+    var JSON_PATH3 = 'Cam_3_intervals_ecc.json';
+
+    var PATHS = [JSON_PATH0, JSON_PATH1, JSON_PATH2, JSON_PATH3]
+
+    var dsply_json = [];
+    PATHS.forEach(function(json_path, cam_id){
+      var curJson;
+      $.getJSON(json_path, function(json) {
+        curJson = json
+      });
+      curJson.forEach(function(item, j){
+        dsply_json.push(createitem(item, dsply_json.length, cam_id))
+      })
+    })
+    var groups = [
+      {
+          "id": "subgroups",
+          "content": 'Ecc Intervals',
+          "nestedGroups": [0,1,2,3]
+      },
+      {
+        "id": 0,
+        "content": 'Cam_0',
+      },
+      {
+        "id": 1,
+        "content": 'Cam_1'
+        // Optional: a field 'className', 'style', 'order', [properties]
+      },
+      {
+        "id": 2,
+        "content": 'Cam_2'
+        // Optional: a field 'className', 'style', 'order', [properties]
+      },
+      {
+        "id": 3,
+        "content": 'Cam_3'
+        // Optional: a field 'className', 'style', 'order', [properties]
+      }
+    ];
+    var options = {
+      "stack": false
+    };
+
+    var container = document.getElementById('visualization');
+
+    console.log(dsply_json)
+    var items = new vis.DataSet(dsply_json);
+    var timeline = new vis.Timeline(container, items, groups, options);
+  </script>
+</body>
+
+</html>
