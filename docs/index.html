@@ -1,16 +1,159 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>title</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <ol>
-      <li><a href="01_video_timeline/01_video_timeline.html">Video Timeline</a></li>
-      <li><a href="02_mark_moved_frames_manual/02_mark_moved_frames_manual.html">Manuell markierte Tage</a></li>
-      <li><a href="overall/overall_timeline.html">overall Googletimeline</a></li>
-    </ol>
-  </body>
+<!DOCTYPE HTML>
+<html lang="de">
+
+<head>
+  <title>Timeline | Basic demo</title>
+  <meta charset="utf-8" />
+  <style type="text/css">
+    body,
+    html {
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.js"></script>
+  <script src="jquery-3.2.1.min.js"></script>
+  <script src="myjs.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Camera 2016 </h1>
+  <div id="visualization"></div>
+  <h2> Ausgeähltes Interval </h2>
+  <div id="disp_selected">Please select an interval.</div>
+  <h2> Alte Darstellung </h2>
+  <ol>
+    <li><a href="01_video_timeline/01_video_timeline.html">Video Timeline</a></li>
+    <li><a href="02_mark_moved_frames_manual/02_mark_moved_frames_manual.html">Manuell markierte Tage</a></li>
+    <li><a href="overall/overall_timeline.html">overall Googletimeline</a></li>
+  </ol>
+
+  <script type="text/javascript">
+    // DOM element where the Timeline will be attached
+    $.ajaxSetup({
+      async: false
+    });
+
+    var JSON_PATH_ECC_0 = 'Cam_0_intervals_ecc.json';
+    var JSON_PATH_ECC_1 = 'Cam_1_intervals_ecc.json';
+    var JSON_PATH_ECC_2 = 'Cam_2_intervals_ecc.json';
+    var JSON_PATH_ECC_3 = 'Cam_3_intervals_ecc.json';
+
+    var JSON_PATH_ECC_EXCL_0 = 'Cam_0_excluded_ecc.json';
+    var JSON_PATH_ECC_EXCL_1 = 'Cam_1_excluded_ecc.json';
+    var JSON_PATH_ECC_EXCL_2 = 'Cam_2_excluded_ecc.json';
+    var JSON_PATH_ECC_EXCL_3 = 'Cam_3_excluded_ecc.json';
+
+    var JSON_PATH_TIME_0 = 'Cam_0_intervals_time.json';
+    var JSON_PATH_TIME_1 = 'Cam_1_intervals_time.json';
+    var JSON_PATH_TIME_2 = 'Cam_2_intervals_time.json';
+    var JSON_PATH_TIME_3 = 'Cam_3_intervals_time.json';
+
+
+    var PATHS_ECC = [JSON_PATH_ECC_0, JSON_PATH_ECC_1, JSON_PATH_ECC_2, JSON_PATH_ECC_3]
+    var JSON_PATHS_ECC_EXCL = [JSON_PATH_ECC_EXCL_0, JSON_PATH_ECC_EXCL_1, JSON_PATH_ECC_EXCL_2, JSON_PATH_ECC_EXCL_3]
+    var PATHS_TIME = [JSON_PATH_TIME_0, JSON_PATH_TIME_1, JSON_PATH_TIME_2, JSON_PATH_TIME_3]
+
+    var dsply_json = [];
+    PATHS_ECC.forEach(function(json_path, i){
+      var curJson;
+      var group = 'ecc_' + i;
+      $.getJSON(json_path, function(json) {
+        curJson = json
+      });
+      curJson.forEach(function(item, j){
+        dsply_json.push(createSafeInterval(item, dsply_json.length, group))
+        if (item["end_unsafe_video_name"] !== null)
+          dsply_json.push(createUnsafeInterval(item, dsply_json.length, group))
+      })
+    });
+
+    JSON_PATHS_ECC_EXCL.forEach(function(json_path, i){
+      var curJson;
+      var group = 'ecc_' + i;
+      $.getJSON(json_path, function(json) {
+        curJson = json
+      });
+      curJson.forEach(function(item, j){
+        dsply_json.push(createExcludedInterval(item, dsply_json.length, group))
+      })
+    });
+
+    PATHS_TIME.forEach(function(json_path, i){
+      var curJson;
+      var group = 'time_' + i;
+      $.getJSON(json_path, function(json) {
+        curJson = json
+      });
+      curJson.forEach(function(item, j){
+        dsply_json.push(createTimeInterval(item, dsply_json.length, group))
+      })
+    });
+
+    var groups = new vis.DataSet();
+    groups.add([
+      {
+        "id": "ecc_0",
+        "content": 'Cam_0 (ecc)',
+        "nestedGroups": ["time_0"],
+        "showNested":false
+      },
+      {
+        "id": "time_0",
+        "content": 'Cam_0 (time)',
+      },
+      {
+        "id": "ecc_1",
+        "content": 'Cam_1 (ecc)',
+        "nestedGroups": ["time_1"],
+        "showNested":false
+        // Optional: a field 'className', 'style', 'order', [properties]
+      },
+      {
+        "id": "time_1",
+        "content": 'Cam_1 (time)'
+      },
+      {
+        "id": "ecc_2",
+        "content": 'Cam_2 (ecc)',
+        "nestedGroups": ["time_2"],
+        "showNested":false
+        // Optional: a field 'className', 'style', 'order', [properties]
+      },
+      {
+        "id": "time_2",
+        "content": 'Cam_2 (time)',
+      },
+      {
+        "id": "ecc_3",
+        "content": 'Cam_3 (ecc)',
+        "nestedGroups": ["time_3"],
+        "showNested":false
+        // Optional: a field 'className', 'style', 'order', [properties]
+      },
+      {
+        "id": "time_3",
+        "content": 'Cam_3 (time)',
+      }
+    ]);
+    // groups.add(groups_data)
+    var options = {
+      "stack": false
+    };
+
+    var container = document.getElementById('visualization');
+    var items = new vis.DataSet(dsply_json);
+    var timeline = new vis.Timeline(container, items, groups, options);
+    timeline.on('select', function (properties) {
+        var item1 = items.get(properties.items);
+        var group = properties.groups
+        console.log(group)
+        var curr_container = document.getElementById('disp_selected')
+        curr_container.innerHTML = item1[0]["title"]
+        // document.write(item1[0]["title"])
+      });
+  </script>
+</body>
+
 </html>
