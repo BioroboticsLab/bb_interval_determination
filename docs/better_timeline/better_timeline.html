@@ -44,9 +44,10 @@
         dsply_json.push(createitem(item, dsply_json.length, cam_id))
       })
     })
-    var groups = [
+    var groups = new vis.DataSet();
+    groups.add([
       {
-          "id": "subgroups",
+          "id": "ecc_intervals",
           "content": 'Ecc Intervals',
           "nestedGroups": [0,1,2,3]
       },
@@ -69,7 +70,8 @@
         "content": 'Cam_3'
         // Optional: a field 'className', 'style', 'order', [properties]
       }
-    ];
+    ]);
+    // groups.add(groups_data)
     var options = {
       "stack": false
     };
