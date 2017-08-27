@@ -41,7 +41,7 @@
         curJson = json
       });
       curJson.forEach(function(item, j){
-        dsply_json.push(createitem(item, dsply_json.length, cam_id))
+        dsply_json.push(createSafeInterval(item, dsply_json.length, cam_id))
       })
     })
     var groups = new vis.DataSet();

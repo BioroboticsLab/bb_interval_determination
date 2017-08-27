@@ -28,7 +28,7 @@ var createTooltip = function(id, time_start, time_end, duration, filename_start,
 return tooltip
 }
 
-var createitem = function(item, id, group){
+var createSafeInterval = function(item, id, group){
   var new_item = {}
   var start = item["start_video_name"].split('--')[0].split('_')[2]
   var end = item["end_safe_video_name"].split('--')[1].slice(0, 27)
