@@ -91,7 +91,7 @@ var createUnsafeInterval = function(item, id, group){
   new_item["start"] = start
   new_item["end"] = end
   new_item["content"] = item["id"].toString()
-  new_item["title"] = createTooltip(item["id"].toString(), start, end, duration.toString(), item["start_video_name"], item["end_safe_video_name"])
+  new_item["title"] = createTooltip(item["id"].toString(), start, end, duration.toString(), item["end_unsafe_video_name"], item["end_unsafe_video_name"])
   new_item["style"] = "background-color: rgb(0, 247, 255);border-color: rgb(255, 255, 255); color:rgb(255, 255, 255)";
   return new_item
 }
