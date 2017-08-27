@@ -20,6 +20,8 @@
 <body>
   <h1>Camera 2016 </h1>
   <div id="visualization"></div>
+  <h2> Ausgeähltes Interval </h2>
+  <div id="disp_selected">Please select an interval.</div>
 
   <script type="text/javascript">
     // DOM element where the Timeline will be attached
@@ -42,6 +44,8 @@
       });
       curJson.forEach(function(item, j){
         dsply_json.push(createSafeInterval(item, dsply_json.length, cam_id))
+        if (item["end_unsafe_video_name"] !== null)
+          dsply_json.push(createUnsafeInterval(item, dsply_json.length, cam_id))
       })
     })
     var groups = new vis.DataSet();
@@ -77,10 +81,14 @@
     };
 
     var container = document.getElementById('visualization');
-
-    console.log(dsply_json)
     var items = new vis.DataSet(dsply_json);
     var timeline = new vis.Timeline(container, items, groups, options);
+    timeline.on('select', function (properties) {
+        var item1 = items.get(properties.items);
+        var curr_container = document.getElementById('disp_selected')
+        curr_container.innerHTML = item1[0]["title"]
+        // document.write(item1[0]["title"])
+      });
   </script>
 </body>
 

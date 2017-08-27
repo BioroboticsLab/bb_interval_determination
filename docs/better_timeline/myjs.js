@@ -46,3 +46,18 @@ var createSafeInterval = function(item, id, group){
   }
   return new_item
 }
+
+var createUnsafeInterval = function(item, id, group){
+  var new_item = {}
+  var start = item["end_unsafe_video_name"].split('--')[0].split('_')[2]
+  var end = item["end_unsafe_video_name"].split('--')[1].slice(0, 27)
+  var duration = new Date(end) - new Date(start)
+  new_item["id"] = id
+  new_item["group"] = group
+  new_item["start"] = start
+  new_item["end"] = end
+  new_item["content"] = item["id"].toString()
+  new_item["title"] = createTooltip(item["id"].toString(), start, end, duration.toString(), item["start_video_name"], item["end_safe_video_name"])
+  new_item["style"] = "background-color: rgb(255, 0, 0);border-color: rgb(255, 255, 255); color:rgb(255, 255, 255)";
+  return new_item
+}
