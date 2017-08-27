@@ -50,6 +50,8 @@
     var JSON_PATH_TIME_2 = 'Cam_2_intervals_time.json';
     var JSON_PATH_TIME_3 = 'Cam_3_intervals_time.json';
 
+    var JSON_PATH_MAINTANCE = "maintenance_info.json";
+
 
     var PATHS_ECC = [JSON_PATH_ECC_0, JSON_PATH_ECC_1, JSON_PATH_ECC_2, JSON_PATH_ECC_3]
     var JSON_PATHS_ECC_EXCL = [JSON_PATH_ECC_EXCL_0, JSON_PATH_ECC_EXCL_1, JSON_PATH_ECC_EXCL_2, JSON_PATH_ECC_EXCL_3]
@@ -91,8 +93,22 @@
       })
     });
 
+    var curJson;
+    $.getJSON(JSON_PATH_MAINTANCE, function(json) {
+      curJson = json
+      console.log(curJson)
+    });
+    curJson.forEach(function(item, j){
+      var adj_item = item
+      adj_item["group"] = "maintenance_info"
+      dsply_json.push(adj_item)
+    });
+
     var groups = new vis.DataSet();
     groups.add([
+      { "id":"maintenance_info",
+        "content": "maintenance"
+      },
       {
         "id": "ecc_0",
         "content": 'Cam_0 (ecc)',
