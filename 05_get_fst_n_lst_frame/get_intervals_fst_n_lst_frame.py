@@ -36,7 +36,7 @@ for i in range(4):
 
         for row in json_intervals:
 
-            # get first frame in interavl
+            # get first frame in safe interavl
             path_start = varchiv.get_abs_path_by_name(row['start_video_name'])
             frame_start = vr.get_first_frame(path_start)
             name_start = '{num:02}_fst_{basename}.jpg'.format(
@@ -44,10 +44,10 @@ for i in range(4):
                 basename=os.path.splitext(row['start_video_name'])[0])
             out_path_start = os.path.join(dir_path, name_start)
             cv2.imwrite(out_path_start, frame_start)
-            logging.info(
-                'First Frame was written to {out}'.format(out=out_path_start))
+            logging.info('First Frame of safe interval was written to {out}'.
+                         format(out=out_path_start))
 
-            # get last frame in interval
+            # get last frame in safe interval
             path_end = varchiv.get_abs_path_by_name(row['end_safe_video_name'])
             frame_end = vr.get_last_frame(path_end)
             name_end = '{num:02}_lst_{basename}.jpg'.format(
@@ -55,5 +55,29 @@ for i in range(4):
                 basename=os.path.splitext(row['end_safe_video_name'])[0])
             out_path_end = os.path.join(dir_path, name_end)
             cv2.imwrite(out_path_end, frame_end)
-            logging.info(
-                'Last Frame was written to {out}'.format(out=out_path_start))
+            logging.info('Last Frame of safe interval was written to {out}'.
+                         format(out=out_path_start))
+
+            if row['end_unsafe_video_name'] is not None:
+                # get first frame in unsafe interval
+                path_unsafe = varchiv.get_abs_path_by_name(
+                    row['end_unsafe_video_name'])
+                frame_unsafe_start = vr.get_first_frame(path_unsafe)
+                name_unsafe_start = '{num:02}_unsafe_fst_{basename}.jpg'.format(
+                    num=row['id'],
+                    basename=os.path.splitext(row['end_unsafe_video_name'])[0])
+                out_path_unsafe_start = os.path.join(dir_path, name_unsafe_start)
+                cv2.imwrite(out_path_unsafe_start, frame_unsafe_start)
+                logging.info('First Frame of unsafe interval was written to {out}'.
+                             format(out=out_path_unsafe_start))
+
+                frame_unsafe_end = vr.get_first_frame(path_unsafe)
+                name_unsafe_end = '{num:02}_unsafe_lst_{basename}.jpg'.format(
+                    num=row['id'],
+                    basename=os.path.splitext(row['end_unsafe_video_name'])[0])
+                out_path_unsafe_end = os.path.join(dir_path, name_unsafe_end)
+                cv2.imwrite(out_path_unsafe_end, frame_unsafe_end)
+                logging.info('Last Frame of unsafe interval was written to {out}'.
+                             format(out=out_path_unsafe_end))
+
+print('Done')
