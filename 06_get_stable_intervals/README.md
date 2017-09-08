@@ -1,8 +1,4 @@
-Besorgt den ersten und letzten Frame eines Intervalls.
-
-Diese Script wird auf dem Flip ausgeführt und benötigt, die folgenden
-.csv-Files, diese halten die Intervalle in welchen das Kamerasetup weitestgehend
-stabil blieb:
+Benötigt die mit Hilfe von `05_get_fst_n_lst_frame` generierten Frames und
 ```
 derived_data/03_ecc_similarity_per_video/Cam_0_intervals_ecc.json
 derived_data/03_ecc_similarity_per_video/Cam_1_intervals_ecc.json
