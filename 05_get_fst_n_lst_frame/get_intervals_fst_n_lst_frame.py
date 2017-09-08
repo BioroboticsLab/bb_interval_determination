@@ -71,7 +71,7 @@ for i in range(4):
                 logging.info('First Frame of unsafe interval was written to {out}'.
                              format(out=out_path_unsafe_start))
 
-                frame_unsafe_end = vr.get_first_frame(path_unsafe)
+                frame_unsafe_end = vr.get_last_frame(path_unsafe)
                 name_unsafe_end = '{num:02}_unsafe_lst_{basename}.jpg'.format(
                     num=row['id'],
                     basename=os.path.splitext(row['end_unsafe_video_name'])[0])
