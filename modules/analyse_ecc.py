@@ -80,36 +80,54 @@ def get_intervalls(path, accuracy):
     df_selection = df_ext[(df_ext['distance'] > accuracy)]
 
     # calculate all intervals
-    intervalle = []
-    excluded = []
+    intervals = []
     start = None
 
-    interval = collections.namedtuple('interval', ['start', 'end_safe', 'end_unsafe'])
+    interval = collections.namedtuple('interval', ['start', 'end', 'info'])
 
     for i, (index, row) in enumerate(df_selection.iterrows()):
 
-        # first intervall begins with first video in year
+        # Das erste Intervall beginnt mit dem ersten Video im Jahr
         if i == 0:
 
-            # start with the first video in year
+            # Start mit dem ersten Frame im Jahr.
             start = df_ext.loc[0]['curr_img_name']
             end = df_ext.loc[index]['pred_img_name']
-            end_unsafe = df_ext.loc[index]['curr_img_name']
-            intervalle.append(interval(start, end, end_unsafe))
+            intervals.append(interval(start, end, 'ecc stable'))
+
+            # Unsicheres Intervall
+            # Da immer nur der erste Frame eines jeden Videos mit dem ersten
+            # Frame des darauffolgenden Videos verglichen wurden, kann
+            # eine mögliche Bewegung in dem Video, bevor die Veränderung
+            # messbar war, stattgefunden haben.
+            start = df_ext.loc[index]['curr_img_name']
+            end = df_ext.loc[index]['curr_img_name']
+            intervals.append(interval(start, end, 'ecc possible movement'))
 
             start = df_ext.loc[index]['succ_img_name']
 
         else:
+            # Überpüft ob bereits im vorherigen Video eine Bewegung stattgefunden
+            # hat.
             if (index - 1) not in df_selection.index.values:
+                # Sicheres Intervall
                 end = df_ext.loc[index]['pred_img_name']
-                end_unsafe = df_ext.loc[index]['curr_img_name']
-                intervalle.append(interval(start, end, end_unsafe))
+                intervals.append(interval(start, end, 'ecc stable'))
+
+                # Unsicheres Intervall
+                start = df_ext.loc[index]['curr_img_name']
+                end = df_ext.loc[index]['curr_img_name']
+                intervals.append(interval(start, end, 'ecc possible movement'))
             else:
-                excluded.append(df_ext.loc[index]['curr_img_name'])
+                # einzelnes Video welches direkt auf ein Video folgt,
+                # bei welchem bereits auch schon eine Bewegung stattgefunden hat.
+                start = df_ext.loc[index]['curr_img_name']
+                end = df_ext.loc[index]['curr_img_name']
+                intervals.append(interval(start, end, 'ecc double movement'))
 
             start = df_ext.loc[index]['succ_img_name']
 
             if i == len(df_selection) - 1:
                 end = df_ext.loc[max(df_ext.index.values)]['succ_img_name']
-                intervalle.append(interval(start, end, None))
-    return intervalle, excluded
+                intervals.append(interval(start, end, 'last interval'))
+    return intervals

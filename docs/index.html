@@ -40,11 +40,6 @@
     var JSON_PATH_ECC_2 = 'Cam_2_intervals_ecc.json';
     var JSON_PATH_ECC_3 = 'Cam_3_intervals_ecc.json';
 
-    var JSON_PATH_ECC_EXCL_0 = 'Cam_0_excluded_ecc.json';
-    var JSON_PATH_ECC_EXCL_1 = 'Cam_1_excluded_ecc.json';
-    var JSON_PATH_ECC_EXCL_2 = 'Cam_2_excluded_ecc.json';
-    var JSON_PATH_ECC_EXCL_3 = 'Cam_3_excluded_ecc.json';
-
     var JSON_PATH_TIME_0 = 'Cam_0_intervals_time.json';
     var JSON_PATH_TIME_1 = 'Cam_1_intervals_time.json';
     var JSON_PATH_TIME_2 = 'Cam_2_intervals_time.json';
@@ -54,7 +49,6 @@
 
 
     var PATHS_ECC = [JSON_PATH_ECC_0, JSON_PATH_ECC_1, JSON_PATH_ECC_2, JSON_PATH_ECC_3]
-    var JSON_PATHS_ECC_EXCL = [JSON_PATH_ECC_EXCL_0, JSON_PATH_ECC_EXCL_1, JSON_PATH_ECC_EXCL_2, JSON_PATH_ECC_EXCL_3]
     var PATHS_TIME = [JSON_PATH_TIME_0, JSON_PATH_TIME_1, JSON_PATH_TIME_2, JSON_PATH_TIME_3]
 
     var dsply_json = [];
@@ -66,19 +60,6 @@
       });
       curJson.forEach(function(item, j){
         dsply_json.push(createSafeInterval(item, dsply_json.length, group))
-        if (item["end_unsafe_video_name"] !== null)
-          dsply_json.push(createUnsafeInterval(item, dsply_json.length, group))
-      })
-    });
-
-    JSON_PATHS_ECC_EXCL.forEach(function(json_path, i){
-      var curJson;
-      var group = 'ecc_' + i;
-      $.getJSON(json_path, function(json) {
-        curJson = json
-      });
-      curJson.forEach(function(item, j){
-        dsply_json.push(createExcludedInterval(item, dsply_json.length, group))
       })
     });
 
