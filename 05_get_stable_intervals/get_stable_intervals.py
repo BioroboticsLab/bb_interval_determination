@@ -171,15 +171,20 @@ class Application(tk.Frame):
         save = True
         root.destroy()
 
-path = "Cam_0_intervals_ecc.json"
-path_images = './Cam_0'
+CAM_ID = 1
+path = "Cam_{CAM_ID}_intervals_ecc.json".format(CAM_ID=CAM_ID)
+path_images = './Cam_{CAM_ID}'.format(CAM_ID=CAM_ID)
 
 basename_json = os.path.splitext(os.path.basename(path))[0]
 output_path = '{basename}_extended.json'.format(basename=basename_json)
 
-save = True
-with open(path, 'r') as jsonfile:
-    json_intervals = json.load(jsonfile)
+save = False
+if os.path.exists(output_path):
+    with open(output_path, 'r') as jsonfile:
+        json_intervals = json.load(jsonfile)
+else:
+    with open(path, 'r') as jsonfile:
+        json_intervals = json.load(jsonfile)
 
 tupels = []
 #  iterate through intervals
