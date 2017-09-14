@@ -109,3 +109,8 @@ raw_data/mse_psnr_ssim/
 
 # testing stuff
 testing_stuff.ipynb
+
+05_get_stable_intervals/Cam_0/*
+05_get_stable_intervals/Cam_1/*
+05_get_stable_intervals/Cam_2/*
+05_get_stable_intervals/Cam_3/*
