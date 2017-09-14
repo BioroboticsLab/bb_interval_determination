@@ -171,7 +171,7 @@ class Application(tk.Frame):
         save = True
         root.destroy()
 
-CAM_ID = 1
+CAM_ID = 3
 path = "Cam_{CAM_ID}_intervals_ecc.json".format(CAM_ID=CAM_ID)
 path_images = './Cam_{CAM_ID}'.format(CAM_ID=CAM_ID)
 
@@ -210,3 +210,5 @@ if save:
     with open(output_path, 'w') as fp:
             json.dump(json_intervals, fp)
     print('File was saved to {output_path}'.format(output_path=output_path))
+    with open(os.path.join('../docs', output_path), 'w') as fp:
+        json.dump(json_intervals, fp)
