@@ -24,18 +24,10 @@ def connect_intervals(json_intervals):
             ecc_stable_interval = curr_interval
 
         elif curr_interval["info"] == 'ecc possible movement':
-            assert ecc_stable_interval['id'] == curr_interval['id'] -1
-
-            if ecc_stable_interval['moved'] or curr_interval['moved']:
-                # save old id and set new id
-                set_new_id(ecc_stable_interval, len(connected_intervals))
-                connected_intervals.append(ecc_stable_interval)
-
-                set_new_id(curr_interval, len(connected_intervals))
-                connected_intervals.append(curr_interval)
+            assert ecc_stable_interval['id'] == curr_interval['id'] - 1
 
             # both intervals not moved
-            else:
+            if ecc_stable_interval['stable'] and curr_interval['stable']:
                 curr_interval['start_video_name'] = ecc_stable_interval['start_video_name']
                 curr_interval['first_frame'] = ecc_stable_interval['first_frame']
                 curr_interval['info'] = 'manuell connected'
@@ -43,6 +35,15 @@ def connect_intervals(json_intervals):
                 curr_interval['id'] = len(connected_intervals)
 
                 connected_intervals.append(curr_interval)
+
+            else:
+                # save old id and set new id
+                set_new_id(ecc_stable_interval, len(connected_intervals))
+                connected_intervals.append(ecc_stable_interval)
+
+                set_new_id(curr_interval, len(connected_intervals))
+                connected_intervals.append(curr_interval)
+
         else:
             set_new_id(curr_interval, len(connected_intervals))
             connected_intervals.append(curr_interval)
