@@ -58,10 +58,12 @@ class Application(tk.Frame):
         self.grading_frame = tk.Frame(self)
         self.grading_frame.pack(side="top")
 
-        self.unstable = tk.Button(self.grading_frame, text="unstable", fg="red", command=self.mark_unstable)
+        self.unstable = tk.Button(self.grading_frame, text="unstable",
+                                  fg="red", command=self.mark_unstable)
         self.unstable.pack(side="left")
 
-        self.stable = tk.Button(self.grading_frame, text="stable", fg="green", command=self.mark_stable)
+        self.stable = tk.Button(self.grading_frame, text="stable",
+                                fg="green", command=self.mark_stable)
         self.stable.pack(side="right")
 
         # Grade info text, if interval is graded.
