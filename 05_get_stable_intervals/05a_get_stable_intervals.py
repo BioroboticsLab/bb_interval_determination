@@ -1,3 +1,7 @@
+"""Used for manual checking of intervals.
+
+It is used to manually check whether the camera setup has changed during intervals.
+"""
 import json
 import os
 import tkinter as tk
@@ -54,11 +58,11 @@ class Application(tk.Frame):
         self.grading_frame = tk.Frame(self)
         self.grading_frame.pack(side="top")
 
-        self.moved = tk.Button(self.grading_frame, text="Moved", fg="red", command=self.moved)
-        self.moved.pack(side="left")
+        self.unstable = tk.Button(self.grading_frame, text="unstable", fg="red", command=self.mark_unstable)
+        self.unstable.pack(side="left")
 
-        self.not_moved = tk.Button(self.grading_frame, text="Not Moved", fg="green", command=self.not_moved)
-        self.not_moved.pack(side="right")
+        self.stable = tk.Button(self.grading_frame, text="stable", fg="green", command=self.mark_stable)
+        self.stable.pack(side="right")
 
         # Grade info text, if interval is graded.
         self.curr_grading = tk.Label(self, fg='black', text=0)
@@ -109,9 +113,9 @@ class Application(tk.Frame):
         self.img = ImageTk.PhotoImage(im)
         self.panel['image'] = self.img
 
-        if 'moved' in json_intervals[curr_tupel].keys():
-            self.curr_grading["text"] = str(json_intervals[curr_tupel]['moved'])
-            if json_intervals[curr_tupel]['moved']:
+        if 'stable' in json_intervals[curr_tupel].keys():
+            self.curr_grading["text"] = str(json_intervals[curr_tupel]['stable'])
+            if not json_intervals[curr_tupel]['stable']:
                 self.curr_grading["fg"] = 'red'
                 self.curr_grading["bg"] = "dark red"
             else:
@@ -141,23 +145,23 @@ class Application(tk.Frame):
             curr_tupel -= 1
             self.info_text["text"] = ''
 
-    def moved(self):
+    def mark_unstable(self):
         global json_intervals
         global curr_tupel
 
         assert json_intervals[curr_tupel]['id'] == curr_tupel
 
-        json_intervals[curr_tupel]['moved'] = True
+        json_intervals[curr_tupel]['stable'] = False
 
         self.go_right()
 
-    def not_moved(self):
+    def mark_stable(self):
         global json_intervals
         global curr_tupel
 
         assert json_intervals[curr_tupel]['id'] == curr_tupel
 
-        json_intervals[curr_tupel]['moved'] = False
+        json_intervals[curr_tupel]['stable'] = True
 
         self.go_right()
 

@@ -43,7 +43,7 @@ var createSafeInterval = function(item, id, group){
   new_item["end"] = end
   new_item["content"] = item["id"].toString()
   new_item["title"] = createTooltip(item["id"].toString(), start, end, duration.toString(), item["start_video_name"], item["end_video_name"], item["info"])
-  if (item["moved"]){
+  if (! item["stable"]){
     new_item["style"] = "background-color: rgb(255, 0, 0);border-color: rgb(255, 255, 255); color:rgb(255, 255, 255)";
   } else if (item["info"] === "ecc possible movement") {
     new_item["style"] = "background-color: rgb(51, 255, 0);border-color: rgb(255, 255, 255); color:rgb(255, 255, 255)";
