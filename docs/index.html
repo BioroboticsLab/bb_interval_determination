@@ -39,6 +39,11 @@
     var JSON_PATH_ECC_STABLE_2 = '05b_Cam_2_intervals_ecc_stable_join.json';
     var JSON_PATH_ECC_STABLE_3 = '05b_Cam_3_intervals_ecc_stable_join.json';
 
+    var JSON_PATH_ECC_STABLE_MAN_0 = '05c_Cam_0_intervals_ecc_stable_join_man.json';
+    var JSON_PATH_ECC_STABLE_MAN_1 = '05c_Cam_1_intervals_ecc_stable_join_man.json';
+    var JSON_PATH_ECC_STABLE_MAN_2 = '05b_Cam_2_intervals_ecc_stable_join_man.json';
+    var JSON_PATH_ECC_STABLE_MAN_3 = '05b_Cam_3_intervals_ecc_stable_join_man.json';
+
     var JSON_PATH_TIME_0 = 'Cam_0_intervals_time.json';
     var JSON_PATH_TIME_1 = 'Cam_1_intervals_time.json';
     var JSON_PATH_TIME_2 = 'Cam_2_intervals_time.json';
@@ -49,6 +54,7 @@
 
     var PATHS_ECC = [JSON_PATH_ECC_0, JSON_PATH_ECC_1, JSON_PATH_ECC_2, JSON_PATH_ECC_3]
     var PATHS_ECC_STABLE = [JSON_PATH_ECC_STABLE_0, JSON_PATH_ECC_STABLE_1, JSON_PATH_ECC_STABLE_2, JSON_PATH_ECC_STABLE_3]
+    var PATHS_ECC_STABLE_MAN = [JSON_PATH_ECC_STABLE_MAN_0, JSON_PATH_ECC_STABLE_MAN_1, JSON_PATH_ECC_STABLE_MAN_2, JSON_PATH_ECC_STABLE_MAN_3]
     var PATHS_TIME = [JSON_PATH_TIME_0, JSON_PATH_TIME_1, JSON_PATH_TIME_2, JSON_PATH_TIME_3]
 
     var dsply_json = [];
@@ -66,6 +72,17 @@
     PATHS_ECC_STABLE.forEach(function(json_path, i){
       var curJson;
       var group = 'ecc_stable_' + i;
+      $.getJSON(json_path, function(json) {
+        curJson = json
+      });
+      curJson.forEach(function(item, j){
+        dsply_json.push(createSafeInterval(item, dsply_json.length, group))
+      })
+    });
+
+    PATHS_ECC_STABLE_MAN.forEach(function(json_path, i){
+      var curJson;
+      var group = 'ecc_stable_man_' + i;
       $.getJSON(json_path, function(json) {
         curJson = json
       });
@@ -112,6 +129,10 @@
         "content": 'Cam_0 (ecc stable)',
       },
       {
+        "id": "ecc_stable_man_0",
+        "content": 'Cam_0 (ecc stable man)',
+      },
+      {
         "id": "time_0",
         "content": 'Cam_0 (time)',
       },
@@ -125,6 +146,10 @@
       {
         "id": "ecc_stable_1",
         "content": 'Cam_1 (ecc stable)',
+      },
+      {
+        "id": "ecc_stable_man_1",
+        "content": 'Cam_1 (ecc stable man)',
       },
       {
         "id": "time_1",
@@ -142,6 +167,10 @@
         "content": 'Cam_2 (ecc stable)',
       },
       {
+        "id": "ecc_stable_man_2",
+        "content": 'Cam_2 (ecc stable man)',
+      },
+      {
         "id": "time_2",
         "content": 'Cam_2 (time)',
       },
@@ -155,6 +184,10 @@
       {
         "id": "ecc_stable_3",
         "content": 'Cam_3 (ecc stable)',
+      },
+      {
+        "id": "ecc_stable_man_3",
+        "content": 'Cam_3 (ecc stable man)',
       },
       {
         "id": "time_3",

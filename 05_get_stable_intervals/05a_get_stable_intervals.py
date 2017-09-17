@@ -177,7 +177,7 @@ class Application(tk.Frame):
         save = True
         root.destroy()
 
-CAM_ID = 1
+CAM_ID = 3
 path = "Cam_{CAM_ID}_intervals_ecc.json".format(CAM_ID=CAM_ID)
 path_images = './Cam_{CAM_ID}'.format(CAM_ID=CAM_ID)
 
