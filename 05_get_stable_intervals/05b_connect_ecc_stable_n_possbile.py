@@ -52,14 +52,17 @@ def connect_intervals(json_intervals):
 
 
 for cam_id in range(4):
-    path = "Cam_{CAM_ID}_intervals_ecc_extended.json".format(CAM_ID=cam_id)
+    path = "05a_Cam_{CAM_ID}_intervals_ecc_stable.json".format(CAM_ID=cam_id)
     with open(path, 'r') as jsonfile:
         json_intervals = json.load(jsonfile)
         connected_intervals = connect_intervals(json_intervals)
 
         basename_json = os.path.splitext(os.path.basename(path))[0]
-        output_path = '{basename}_stable.json'.format(basename=basename_json)
+        output_path = '05b_{basename}_join.json'.format(basename=basename_json[4:])
 
         with open(output_path, 'w') as fp:
                 json.dump(connected_intervals, fp)
         print('File was saved to {output_path}'.format(output_path=output_path))
+
+        with open(os.path.join('../docs', output_path), 'w') as fp:
+            json.dump(connected_intervals, fp)
