@@ -32,6 +32,31 @@ var createTooltip = function(id, time_start, time_end, duration, filename_start,
 return tooltip
 }
 
+var createTooltipSharedInterval = function(id, item){
+  var duration = new Date(item["left"]["ts_end"]) - new Date(item["left"]["ts_start"]);
+  if (item["left"] !== null)
+    left = createTooltip(item["id"], item["left"]["ts_start"],item["left"]["ts_end"],
+                         duration,item["left"]["start_video_name"],item["left"]["end_video_name"],item["left"]["info"])
+  else
+    left = 'nothing to see here..'
+  if (item["right"] !== null)
+    right = createTooltip(item["id"], item["right"]["ts_start"],item["right"]["ts_end"],
+                         duration,item["right"]["start_video_name"],item["right"]["end_video_name"],item["right"]["info"])
+  else
+    right = 'nothing to see here..'
+ var tooltip ="<table style=\"font-size:10px\">\
+   <tr>\
+       <th>Left</th><th>Right</th>\
+   </tr>\
+   <tr>\
+       <td>{left}</td> <td>{right}</td>\
+   </tr>\
+</table>"
+  .replace("{left}", left)
+  .replace("{right}", right)
+  return tooltip
+}
+
 var createSafeInterval = function(item, id, group){
   var new_item = {}
   var start = item["start_video_name"].split('--')[0].split('_')[2]
@@ -44,29 +69,12 @@ var createSafeInterval = function(item, id, group){
   new_item["content"] = item["id"].toString()
   new_item["title"] = createTooltip(item["id"].toString(), start, end, duration.toString(), item["start_video_name"], item["end_video_name"], item["info"])
   if (! item["stable"]){
-    new_item["style"] = "background-color: rgb(255, 0, 0);border-color: rgb(255, 255, 255); color:rgb(255, 255, 255)";
+    new_item["className"] = "unstable-interval";
   } else if (item["info"] === "ecc possible movement") {
-    new_item["style"] = "background-color: rgb(51, 255, 0);border-color: rgb(255, 255, 255); color:rgb(255, 255, 255)";
-  // }else  if (item["id"] %2 === 0) {
-  //   new_item["style"] = "background-color: rgb(75, 65, 65);border-color: rgb(255, 255, 255); color:rgb(255, 255, 255)";
+    new_item["className"] = "possible-unstable-interval";
   } else {
-    new_item["style"] = "background-color: rgb(200, 198, 100);border-color:rgb(255, 255, 255); color:rgb(255, 255, 255)";
+    new_item["className"] = "stable-interval";
   }
-  return new_item
-}
-
-var createExcludedInterval = function(item, id, group){
-  var new_item = {}
-  var start = item.split('--')[0].split('_')[2]
-  var end = item.split('--')[1].slice(0, 27)
-  var duration = new Date(end) - new Date(start)
-  new_item["id"] = id
-  new_item["group"] = group
-  new_item["start"] = start
-  new_item["end"] = end
-  new_item["content"] = "X"
-  new_item["title"] = createTooltip("X", start, end, duration.toString(), item, item)
-  new_item["style"] = "background-color: rgb(255, 0, 0);border-color:rgb(255, 255, 255); color:rgb(255, 255, 255)";
   return new_item
 }
 
@@ -82,24 +90,63 @@ var createTimeInterval = function(item, id, group){
   new_item["content"] = item["id"].toString()
   new_item["title"] = createTooltip(item["id"].toString(), start, end, duration.toString(), item["start_video_name"], item["end_video_name"])
   if (item["id"] %2 === 0) {
-    new_item["style"] = "background-color: rgb(226, 193, 5);border-color: rgb(255, 255, 255); color:rgb(255, 255, 255)";
+    new_item["className"] = "even-interval";
   } else {
-    new_item["style"] = "background-color: rgb(15, 254, 189);border-color:rgb(255, 255, 255); color:rgb(255, 255, 255)";
+    new_item["className"] = "odd-interval";
   }
   return new_item
 }
 
-var createUnsafeInterval = function(item, id, group){
+var createIntervalPair = function(item, id, group){
+  console.log(item)
   var new_item = {}
-  var start = item["end_unsafe_video_name"].split('--')[0].split('_')[2]
-  var end = item["end_unsafe_video_name"].split('--')[1].slice(0, 27)
-  var duration = new Date(end) - new Date(start)
+  var start = item["ts_start"]
+  var end = item["ts_end"]
   new_item["id"] = id
-  new_item["group"] = group
   new_item["start"] = start
   new_item["end"] = end
-  new_item["content"] = item["id"].toString()
-  new_item["title"] = createTooltip(item["id"].toString(), start, end, duration.toString(), item["end_unsafe_video_name"], item["end_unsafe_video_name"])
-  new_item["style"] = "background-color: rgb(0, 247, 255);border-color: rgb(255, 255, 255); color:rgb(255, 255, 255)";
+  new_item["group"] = group
+  new_item["className"] = 'stable-interval';
+  if (! item["stable"]){
+    new_item["className"] = 'unstable-interval';
+  }
+  new_item["content"] = item['id'].toString();
+  new_item["title"] = createTooltipSharedInterval(id, item)
+  // new_item["title"] = createTooltip("", start, end, "1", item["left"]["start_video_name"], item["left"]["end_video_name"]);
   return new_item
+}
+
+var createOneSideFromIntervalPair = function(item, id, group, side){
+  console.log(item)
+  var new_item = {}
+  if (item[side] === null)
+    return null
+  var start = item[side]["ts_start"]
+  var end = item[side]["ts_end"]
+  var duration = new Date(end) - new Date(start)
+  new_item["id"] = id
+  new_item["start"] = start
+  new_item["end"] = end
+  new_item["group"] = group
+  new_item["className"] = 'stable-interval';
+  if (! item[side]["stable"]){
+    new_item["className"] = 'unstable-interval';
+  }
+  new_item["content"] = item['id'].toString();
+  new_item["title"] = createTooltip(item['id'].toString(), start, end, duration.toString(), item[side]["start_video_name"], item[side]["end_video_name"], item[side]["info"]);
+  return new_item
+}
+
+var createLeftSideInterval = function(item, id, group){
+  return createOneSideFromIntervalPair(item, id, group, "left")
+}
+
+var createRightSideInterval = function(item, id, group){
+  return createOneSideFromIntervalPair(item, id, group, "right")
+}
+
+function setGroupName(item, id, group){
+  var adj_item = item
+  adj_item["group"] = group
+  return adj_item
 }

@@ -10,7 +10,7 @@
       font-family: sans-serif;
     }
   </style>
-
+  <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis.js"></script>
   <script src="jquery-3.2.1.min.js"></script>
   <script src="myjs.js"></script>
@@ -29,169 +29,102 @@
       async: false
     });
 
-    var JSON_PATH_ECC_STABLE_0 = '05a_Cam_0_intervals_ecc_stable.json';
-    var JSON_PATH_ECC_STABLE_1 = '05a_Cam_1_intervals_ecc_stable.json';
-    var JSON_PATH_ECC_STABLE_2 = '05a_Cam_2_intervals_ecc_stable.json';
-    var JSON_PATH_ECC_STABLE_3 = '05a_Cam_3_intervals_ecc_stable.json';
-
-    var JSON_PATH_ECC_STABLE_JOIN_0 = '05b_Cam_0_intervals_ecc_stable_join.json';
-    var JSON_PATH_ECC_STABLE_JOIN_1 = '05b_Cam_1_intervals_ecc_stable_join.json';
-    var JSON_PATH_ECC_STABLE_JOIN_2 = '05b_Cam_2_intervals_ecc_stable_join.json';
-    var JSON_PATH_ECC_STABLE_JOIN_3 = '05b_Cam_3_intervals_ecc_stable_join.json';
-
-    var JSON_PATH_ECC_STABLE_JOIN_MAN_0 = '05c_Cam_0_intervals_ecc_stable_join_man.json';
-    var JSON_PATH_ECC_STABLE_JOIN_MAN_1 = '05c_Cam_1_intervals_ecc_stable_join_man.json';
-    var JSON_PATH_ECC_STABLE_JOIN_MAN_2 = '05c_Cam_2_intervals_ecc_stable_join_man.json';
-    var JSON_PATH_ECC_STABLE_JOIN_MAN_3 = '05c_Cam_3_intervals_ecc_stable_join_man.json';
-
-    var JSON_PATH_TIME_0 = 'Cam_0_intervals_time.json';
-    var JSON_PATH_TIME_1 = 'Cam_1_intervals_time.json';
-    var JSON_PATH_TIME_2 = 'Cam_2_intervals_time.json';
-    var JSON_PATH_TIME_3 = 'Cam_3_intervals_time.json';
-
     var JSON_PATH_MAINTANCE = "maintenance_info.json";
+    var JSON_PATH_INTERVAL_PAIRS_01 = '06_Cam_01_intervals_pair.json';
+    var JSON_PATH_INTERVAL_PAIRS_23 = '06_Cam_23_intervals_pair.json';
 
-
-    var PATHS_ECC_STABLE = [JSON_PATH_ECC_STABLE_0, JSON_PATH_ECC_STABLE_1, JSON_PATH_ECC_STABLE_2, JSON_PATH_ECC_STABLE_3]
-    var PATHS_ECC_STABLE_JOIN = [JSON_PATH_ECC_STABLE_JOIN_0, JSON_PATH_ECC_STABLE_JOIN_1, JSON_PATH_ECC_STABLE_JOIN_2, JSON_PATH_ECC_STABLE_JOIN_3]
-    var PATHS_ECC_STABLE_JOIN_MAN = [JSON_PATH_ECC_STABLE_JOIN_MAN_0, JSON_PATH_ECC_STABLE_JOIN_MAN_1, JSON_PATH_ECC_STABLE_JOIN_MAN_2, JSON_PATH_ECC_STABLE_JOIN_MAN_3]
-    var PATHS_TIME = [JSON_PATH_TIME_0, JSON_PATH_TIME_1, JSON_PATH_TIME_2, JSON_PATH_TIME_3]
+    var PATHS_TIME = []
+    var PATHS_ECC_STABLE_JOIN_MAN = []
+    for (let i = 0; i < 4; i++) {
+      PATHS_ECC_STABLE_JOIN_MAN.push(`05c_Cam_${i}_intervals_ecc_stable_join_man.json`);
+      PATHS_TIME.push(`Cam_${i}_intervals_time.json`);
+    }
 
     var dsply_json = [];
-    PATHS_ECC_STABLE.forEach(function(json_path, i){
+
+    function addToJsonMultiplePath(dsply_json, paths, group_prefix, convert_func){
+      paths.forEach(function(json_path, i){
+        var curJson;
+        var group = group_prefix + i;
+        $.getJSON(json_path, function(json) {
+          curJson = json
+        });
+        curJson.forEach(function(item, j){
+          dsply_json.push(convert_func(item, dsply_json.length, group))
+        })
+      });
+    }
+
+    function addToJsonOnePath(dsply_json, path, group_name, convert_func){
       var curJson;
-      var group = 'ecc_stable_' + i;
-      $.getJSON(json_path, function(json) {
+      var group = group_name
+      $.getJSON(path, function(json) {
         curJson = json
       });
       curJson.forEach(function(item, j){
-        dsply_json.push(createSafeInterval(item, dsply_json.length, group))
-      })
-    });
-
-    PATHS_ECC_STABLE_JOIN.forEach(function(json_path, i){
-      var curJson;
-      var group = 'ecc_stable_join_' + i;
-      $.getJSON(json_path, function(json) {
-        curJson = json
+        new_item = convert_func(item, dsply_json.length, group)
+        if (new_item !== null)
+          dsply_json.push(new_item)
       });
-      curJson.forEach(function(item, j){
-        dsply_json.push(createSafeInterval(item, dsply_json.length, group))
-      })
-    });
+    }
 
-    PATHS_ECC_STABLE_JOIN_MAN.forEach(function(json_path, i){
-      var curJson;
-      var group = 'ecc_stable_join_man_' + i;
-      $.getJSON(json_path, function(json) {
-        curJson = json
-      });
-      curJson.forEach(function(item, j){
-        dsply_json.push(createSafeInterval(item, dsply_json.length, group))
-      })
-    });
+    addToJsonMultiplePath(dsply_json, PATHS_ECC_STABLE_JOIN_MAN, 'ecc_stable_join_man_', createSafeInterval)
+    addToJsonMultiplePath(dsply_json, PATHS_TIME, 'time_', createTimeInterval)
 
-    PATHS_TIME.forEach(function(json_path, i){
-      var curJson;
-      var group = 'time_' + i;
-      $.getJSON(json_path, function(json) {
-        curJson = json
-      });
-      curJson.forEach(function(item, j){
-        dsply_json.push(createTimeInterval(item, dsply_json.length, group))
-      })
-    });
+    addToJsonOnePath(dsply_json, JSON_PATH_INTERVAL_PAIRS_01, 'interval_pairs_01', createIntervalPair)
+    addToJsonOnePath(dsply_json, JSON_PATH_INTERVAL_PAIRS_23, 'interval_pairs_23', createIntervalPair)
+    addToJsonOnePath(dsply_json, JSON_PATH_MAINTANCE, 'maintenance_info', setGroupName)
 
-    var curJson;
-    $.getJSON(JSON_PATH_MAINTANCE, function(json) {
-      curJson = json
-      console.log(curJson)
-    });
-    curJson.forEach(function(item, j){
-      var adj_item = item
-      adj_item["group"] = "maintenance_info"
-      dsply_json.push(adj_item)
-    });
+    addToJsonOnePath(dsply_json, JSON_PATH_INTERVAL_PAIRS_01, 'interval_pairs_0', createLeftSideInterval)
+    addToJsonOnePath(dsply_json, JSON_PATH_INTERVAL_PAIRS_01, 'interval_pairs_1', createRightSideInterval)
+    addToJsonOnePath(dsply_json, JSON_PATH_INTERVAL_PAIRS_23, 'interval_pairs_2', createLeftSideInterval)
+    addToJsonOnePath(dsply_json, JSON_PATH_INTERVAL_PAIRS_23, 'interval_pairs_3', createRightSideInterval)
 
     var groups = new vis.DataSet();
     groups.add([
       { "id":"maintenance_info",
         "content": "maintenance"
       },
-      {
-        "id": "ecc_stable_join_man_0",
-        "content": 'Cam_0 (stable join man)',
-        "nestedGroups": ["ecc_stable_join_0", "ecc_stable_0", "time_0"],
+      { "id": "interval_pairs_01",
+        "content": "Shared intervals of Cam 0 and Cam 1",
+        // "nestedGroups":["ecc_stable_join_man_0", "ecc_stable_join_man_1"],
+        "nestedGroups":  ["interval_pairs_0", "interval_pairs_1"],
         "showNested":false
       },
-      {
-        "id": "ecc_stable_join_man_1",
-        "content": 'Cam_1 (stable join man)',
-        "nestedGroups": ["ecc_stable_join_1", "ecc_stable_1", "time_1"],
+      { "id": "interval_pairs_23",
+        "content": "Shared intervals of Cam 2 and Cam 3",
+        "nestedGroups":  ["interval_pairs_2", "interval_pairs_3"],
+        // "nestedGroups":["ecc_stable_join_man_2", "ecc_stable_join_man_3"],
         "showNested":false
       },
-      {
-        "id": "ecc_stable_join_man_2",
-        "content": 'Cam_2 (stable join man)',
-        "nestedGroups": ["ecc_stable_join_2", "ecc_stable_2", "time_2"],
+      { "id":"time",
+        "content": "time intervals",
+        "nestedGroups": ["time_0","time_1","time_2","time_3"],
         "showNested":false
       },
-      {
-        "id": "ecc_stable_join_man_3",
-        "content": 'Cam_3 (stable join man)',
-        "nestedGroups": ["ecc_stable_join_3", "ecc_stable_3", "time_3"],
+      { "id":"ecc_stable_join_man",
+        "content": "ecc_stable_join_man",
+        "nestedGroups": ["ecc_stable_join_man_0","ecc_stable_join_man_1","ecc_stable_join_man_2","ecc_stable_join_man_3"],
         "showNested":false
-      },
-      {
-        "id": "ecc_stable_join_0",
-        "content": 'Cam_0 (stable join)',
-      },
-      {
-        "id": "ecc_stable_join_1",
-        "content": 'Cam_1 (stable join)',
-      },
-      {
-        "id": "ecc_stable_join_2",
-        "content": 'Cam_2 (stable join)',
-      },
-      {
-        "id": "ecc_stable_join_3",
-        "content": 'Cam_3 (stable join)',
-      },
-      {
-        "id": "ecc_stable_0",
-        "content": 'Cam_0 (stable)',
-      },
-      {
-        "id": "ecc_stable_1",
-        "content": 'Cam_1 (stable)',
-      },
-      {
-        "id": "ecc_stable_2",
-        "content": 'Cam_2 (stable)',
-      },
-      {
-        "id": "ecc_stable_3",
-        "content": 'Cam_3 (stable)',
-      },
-      {
-        "id": "time_0",
-        "content": 'Cam_0 (time)',
-      },
-      {
-        "id": "time_1",
-        "content": 'Cam_1 (time)',
-      },
-      {
-        "id": "time_2",
-        "content": 'Cam_2 (time)',
-      },
-      {
-        "id": "time_3",
-        "content": 'Cam_3 (time)',
       }
-    ]);
-    // groups.add(groups_data)
+    ])
+
+    for (let i = 0; i < 4; i++) {
+      groups.add([
+        {
+          "id": `ecc_stable_join_man_${i}`,
+          "content": `Cam_${i} (stable join man)`,
+        },
+        {
+          "id": `time_${i}`,
+          "content": `Cam_${i} (time)`,
+        },
+        {
+          "id": `interval_pairs_${i}`,
+          "content": `Intervals of Cam ${i}`,
+        },
+      ])
+    }
     var options = {
       "stack": false
     };
@@ -202,10 +135,9 @@
     timeline.on('select', function (properties) {
         var item1 = items.get(properties.items);
         var group = properties.groups
-        console.log(group)
         var curr_container = document.getElementById('disp_selected')
         curr_container.innerHTML = item1[0]["title"]
-        // document.write(item1[0]["title"])
+
       });
   </script>
 </body>

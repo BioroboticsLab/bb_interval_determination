@@ -1,0 +1,668 @@
+[
+  {
+    "id": 0,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-20T10:25:42.147975Z--2016-07-20T10:29:33.027167Z.mkv",
+      "id": 0,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-07-19T12:37:31.470185Z--2016-07-19T12:38:14.657679Z.mkv",
+      "ts_end": "2016-07-20T10:29:33.027167Z",
+      "ts_start": "2016-07-19T12:37:31.470185Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-20T10:26:56.225594Z--2016-07-20T10:29:33.027102Z.mkv",
+      "id": 0,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-07-19T12:37:31.801910Z--2016-07-19T12:38:14.656075Z.mkv",
+      "ts_end": "2016-07-20T10:29:33.027102Z",
+      "ts_start": "2016-07-19T12:37:31.801910Z"
+    },
+    "stable": true,
+    "ts_end": "2016-07-20T10:29:33.027167Z",
+    "ts_start": "2016-07-19T12:37:31.470185Z"
+  },
+  {
+    "id": 1,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-24T11:29:03.084464Z--2016-07-24T11:34:42.931128Z.mkv",
+      "id": 1,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-07-20T10:40:36.396559Z--2016-07-20T10:46:16.242492Z.mkv",
+      "ts_end": "2016-07-24T11:34:42.931128Z",
+      "ts_start": "2016-07-20T10:40:36.396559Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-24T11:29:03.084393Z--2016-07-24T11:34:42.931284Z.mkv",
+      "id": 1,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-07-20T10:40:36.396398Z--2016-07-20T10:46:16.242825Z.mkv",
+      "ts_end": "2016-07-24T11:34:42.931284Z",
+      "ts_start": "2016-07-20T10:40:36.396398Z"
+    },
+    "stable": true,
+    "ts_end": "2016-07-24T11:34:42.931284Z",
+    "ts_start": "2016-07-20T10:40:36.396398Z"
+  },
+  {
+    "id": 2,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-24T11:34:43.265682Z--2016-07-24T11:40:23.110571Z.mkv",
+      "id": 2,
+      "info": "ecc possible movement",
+      "stable": false,
+      "start_video_name": "Cam_0_2016-07-24T11:34:43.265682Z--2016-07-24T11:40:23.110571Z.mkv",
+      "ts_end": "2016-07-24T11:40:23.110571Z",
+      "ts_start": "2016-07-24T11:34:43.265682Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-24T11:34:43.265973Z--2016-07-24T11:40:23.110758Z.mkv",
+      "id": 2,
+      "info": "ecc possible movement",
+      "stable": false,
+      "start_video_name": "Cam_1_2016-07-24T11:34:43.265973Z--2016-07-24T11:40:23.110758Z.mkv",
+      "ts_end": "2016-07-24T11:40:23.110758Z",
+      "ts_start": "2016-07-24T11:34:43.265973Z"
+    },
+    "stable": false,
+    "ts_end": "2016-07-24T11:40:23.110758Z",
+    "ts_start": "2016-07-24T11:34:43.265682Z"
+  },
+  {
+    "id": 3,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-25T10:47:50.688027Z--2016-07-25T10:53:30.535022Z.mkv",
+      "id": 3,
+      "info": "ecc stable",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-07-24T11:40:23.444951Z--2016-07-24T11:46:03.289876Z.mkv",
+      "ts_end": "2016-07-25T10:53:30.535022Z",
+      "ts_start": "2016-07-24T11:40:23.444951Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-25T10:47:51.020343Z--2016-07-25T10:53:30.867294Z.mkv",
+      "id": 3,
+      "info": "ecc stable",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-07-24T11:40:23.443903Z--2016-07-24T11:46:03.290099Z.mkv",
+      "ts_end": "2016-07-25T10:53:30.867294Z",
+      "ts_start": "2016-07-24T11:40:23.443903Z"
+    },
+    "stable": true,
+    "ts_end": "2016-07-25T10:53:30.867294Z",
+    "ts_start": "2016-07-24T11:40:23.443903Z"
+  },
+  {
+    "id": 4,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-25T10:53:30.870457Z--2016-07-25T10:59:10.713458Z.mkv",
+      "id": 4,
+      "info": "ecc possible movement",
+      "stable": false,
+      "start_video_name": "Cam_0_2016-07-25T10:53:30.870457Z--2016-07-25T10:59:10.713458Z.mkv",
+      "ts_end": "2016-07-25T10:59:10.713458Z",
+      "ts_start": "2016-07-25T10:53:30.870457Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-25T10:53:31.199686Z--2016-07-25T10:59:11.045556Z.mkv",
+      "id": 4,
+      "info": "ecc possible movement",
+      "stable": false,
+      "start_video_name": "Cam_1_2016-07-25T10:53:31.199686Z--2016-07-25T10:59:11.045556Z.mkv",
+      "ts_end": "2016-07-25T10:59:11.045556Z",
+      "ts_start": "2016-07-25T10:53:31.199686Z"
+    },
+    "stable": false,
+    "ts_end": "2016-07-25T10:59:11.045556Z",
+    "ts_start": "2016-07-25T10:53:30.870457Z"
+  },
+  {
+    "id": 5,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-27T13:46:39.163393Z--2016-07-27T13:50:56.620522Z.mkv",
+      "id": 5,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-07-25T10:59:11.045678Z--2016-07-25T11:04:50.893604Z.mkv",
+      "ts_end": "2016-07-27T13:50:56.620522Z",
+      "ts_start": "2016-07-25T10:59:11.045678Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-27T13:46:39.496227Z--2016-07-27T13:50:56.620465Z.mkv",
+      "id": 5,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-07-25T10:59:11.379029Z--2016-07-25T11:04:51.225284Z.mkv",
+      "ts_end": "2016-07-27T13:50:56.620465Z",
+      "ts_start": "2016-07-25T10:59:11.379029Z"
+    },
+    "stable": true,
+    "ts_end": "2016-07-27T13:50:56.620522Z",
+    "ts_start": "2016-07-25T10:59:11.045678Z"
+  },
+  {
+    "id": 6,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-27T14:59:16.877336Z--2016-07-27T15:04:56.723083Z.mkv",
+      "id": 6,
+      "info": "ecc double movement",
+      "stable": false,
+      "start_video_name": "Cam_0_2016-07-27T14:59:16.877336Z--2016-07-27T15:04:56.723083Z.mkv",
+      "ts_end": "2016-07-27T15:04:56.723083Z",
+      "ts_start": "2016-07-27T14:59:16.877336Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-27T14:59:17.210304Z--2016-07-27T15:04:57.056134Z.mkv",
+      "id": 6,
+      "info": "ecc double movement",
+      "stable": false,
+      "start_video_name": "Cam_1_2016-07-27T14:59:17.210304Z--2016-07-27T15:04:57.056134Z.mkv",
+      "ts_end": "2016-07-27T15:04:57.056134Z",
+      "ts_start": "2016-07-27T14:59:17.210304Z"
+    },
+    "stable": false,
+    "ts_end": "2016-07-27T15:04:57.056134Z",
+    "ts_start": "2016-07-27T14:59:16.877336Z"
+  },
+  {
+    "id": 7,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-27T16:01:38.847405Z--2016-07-27T16:07:18.692934Z.mkv",
+      "id": 7,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-07-27T15:04:57.056219Z--2016-07-27T15:10:36.901958Z.mkv",
+      "ts_end": "2016-07-27T16:07:18.692934Z",
+      "ts_start": "2016-07-27T15:04:57.056219Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-27T16:01:39.179271Z--2016-07-27T16:07:19.025475Z.mkv",
+      "id": 7,
+      "info": "ecc stable",
+      "stable": false,
+      "start_video_name": "Cam_1_2016-07-27T15:04:57.387879Z--2016-07-27T15:10:37.235565Z.mkv",
+      "ts_end": "2016-07-27T16:07:19.025475Z",
+      "ts_start": "2016-07-27T15:04:57.387879Z"
+    },
+    "stable": false,
+    "ts_end": "2016-07-27T16:07:19.025475Z",
+    "ts_start": "2016-07-27T15:04:57.056219Z"
+  },
+  {
+    "id": 8,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-27T16:07:19.025546Z--2016-07-27T16:12:58.874289Z.mkv",
+      "id": 8,
+      "info": "ecc double movement",
+      "stable": false,
+      "start_video_name": "Cam_0_2016-07-27T16:07:19.025546Z--2016-07-27T16:12:58.874289Z.mkv",
+      "ts_end": "2016-07-27T16:12:58.874289Z",
+      "ts_start": "2016-07-27T16:07:19.025546Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-27T16:07:19.357511Z--2016-07-27T16:12:59.205291Z.mkv",
+      "info": "closest video",
+      "stable": false,
+      "start_video_name": "Cam_1_2016-07-27T16:07:19.357511Z--2016-07-27T16:12:59.205291Z.mkv",
+      "ts_end": "2016-07-27T16:12:59.205291Z",
+      "ts_start": "2016-07-27T16:07:19.357511Z"
+    },
+    "stable": false,
+    "ts_end": "2016-07-27T16:12:59.205291Z",
+    "ts_start": "2016-07-27T16:07:19.025546Z"
+  },
+  {
+    "id": 9,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-28T11:06:03.598201Z--2016-07-28T11:11:43.446201Z.mkv",
+      "id": 9,
+      "info": "ecc stable",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-07-27T16:12:59.205354Z--2016-07-27T16:18:39.050062Z.mkv",
+      "ts_end": "2016-07-28T11:11:43.446201Z",
+      "ts_start": "2016-07-27T16:12:59.205354Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-28T11:07:05.724169Z--2016-07-28T11:12:45.569805Z.mkv",
+      "info": "closest video",
+      "stable": false,
+      "start_video_name": "Cam_1_2016-07-27T16:12:59.537338Z--2016-07-27T16:18:39.383884Z.mkv",
+      "ts_end": "2016-07-28T11:12:45.569805Z",
+      "ts_start": "2016-07-27T16:12:59.537338Z"
+    },
+    "stable": false,
+    "ts_end": "2016-07-28T11:12:45.569805Z",
+    "ts_start": "2016-07-27T16:12:59.205354Z"
+  },
+  {
+    "id": 10,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-28T11:11:43.778974Z--2016-07-28T11:17:23.625132Z.mkv",
+      "id": 10,
+      "info": "ecc possible movement",
+      "stable": false,
+      "start_video_name": "Cam_0_2016-07-28T11:11:43.778974Z--2016-07-28T11:17:23.625132Z.mkv",
+      "ts_end": "2016-07-28T11:17:23.625132Z",
+      "ts_start": "2016-07-28T11:11:43.778974Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-28T11:12:45.902851Z--2016-07-28T11:18:25.749365Z.mkv",
+      "id": 8,
+      "info": "ecc possible movement",
+      "stable": false,
+      "start_video_name": "Cam_1_2016-07-28T11:12:45.902851Z--2016-07-28T11:18:25.749365Z.mkv",
+      "ts_end": "2016-07-28T11:18:25.749365Z",
+      "ts_start": "2016-07-28T11:12:45.902851Z"
+    },
+    "stable": false,
+    "ts_end": "2016-07-28T11:18:25.749365Z",
+    "ts_start": "2016-07-28T11:11:43.778974Z"
+  },
+  {
+    "id": 11,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-29T10:37:09.078228Z--2016-07-29T10:42:13.710859Z.mkv",
+      "id": 11,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-07-28T11:17:23.958535Z--2016-07-28T11:23:03.804574Z.mkv",
+      "ts_end": "2016-07-29T10:42:13.710859Z",
+      "ts_start": "2016-07-28T11:17:23.958535Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-29T10:37:10.075190Z--2016-07-29T10:42:13.713971Z.mkv",
+      "id": 9,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-07-28T11:18:26.082701Z--2016-07-28T11:24:05.978776Z.mkv",
+      "ts_end": "2016-07-29T10:42:13.713971Z",
+      "ts_start": "2016-07-28T11:18:26.082701Z"
+    },
+    "stable": true,
+    "ts_end": "2016-07-29T10:42:13.713971Z",
+    "ts_start": "2016-07-28T11:17:23.958535Z"
+  },
+  {
+    "id": 12,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-29T13:09:23.989528Z--2016-07-29T13:15:03.835340Z.mkv",
+      "id": 12,
+      "info": "ecc double movement",
+      "stable": false,
+      "start_video_name": "Cam_0_2016-07-29T13:09:23.989528Z--2016-07-29T13:15:03.835340Z.mkv",
+      "ts_end": "2016-07-29T13:15:03.835340Z",
+      "ts_start": "2016-07-29T13:09:23.989528Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-29T13:09:23.989534Z--2016-07-29T13:15:03.835352Z.mkv",
+      "id": 10,
+      "info": "ecc double movement",
+      "stable": false,
+      "start_video_name": "Cam_1_2016-07-29T13:09:23.989534Z--2016-07-29T13:15:03.835352Z.mkv",
+      "ts_end": "2016-07-29T13:15:03.835352Z",
+      "ts_start": "2016-07-29T13:09:23.989534Z"
+    },
+    "stable": false,
+    "ts_end": "2016-07-29T13:15:03.835352Z",
+    "ts_start": "2016-07-29T13:09:23.989528Z"
+  },
+  {
+    "id": 13,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-29T13:15:04.170947Z--2016-07-29T13:20:44.013919Z.mkv",
+      "id": 13,
+      "info": "ecc double movement",
+      "stable": false,
+      "start_video_name": "Cam_0_2016-07-29T13:15:04.170947Z--2016-07-29T13:20:44.013919Z.mkv",
+      "ts_end": "2016-07-29T13:20:44.013919Z",
+      "ts_start": "2016-07-29T13:15:04.170947Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-29T13:15:04.168519Z--2016-07-29T13:20:44.013947Z.mkv",
+      "id": 11,
+      "info": "ecc stable",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-07-29T13:15:04.168519Z--2016-07-29T13:20:44.013947Z.mkv",
+      "ts_end": "2016-07-29T13:20:44.013947Z",
+      "ts_start": "2016-07-29T13:15:04.168519Z"
+    },
+    "stable": false,
+    "ts_end": "2016-07-29T13:20:44.013947Z",
+    "ts_start": "2016-07-29T13:15:04.168519Z"
+  },
+  {
+    "id": 14,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-07-29T13:20:44.346866Z--2016-07-29T13:26:24.192453Z.mkv",
+      "id": 14,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-07-29T13:20:44.346866Z--2016-07-29T13:26:24.192453Z.mkv",
+      "ts_end": "2016-07-29T13:26:24.192453Z",
+      "ts_start": "2016-07-29T13:20:44.346866Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-07-29T13:20:44.347899Z--2016-07-29T13:26:24.192453Z.mkv",
+      "id": 12,
+      "info": "ecc possible movement",
+      "stable": false,
+      "start_video_name": "Cam_1_2016-07-29T13:20:44.347899Z--2016-07-29T13:26:24.192453Z.mkv",
+      "ts_end": "2016-07-29T13:26:24.192453Z",
+      "ts_start": "2016-07-29T13:20:44.347899Z"
+    },
+    "stable": false,
+    "ts_end": "2016-07-29T13:26:24.192453Z",
+    "ts_start": "2016-07-29T13:20:44.346866Z"
+  },
+  {
+    "id": 15,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-08-01T09:30:08.706039Z--2016-08-01T09:33:22.712395Z.mkv",
+      "info": "closest video",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-07-29T13:26:24.525832Z--2016-07-29T13:32:04.370875Z.mkv",
+      "ts_end": "2016-08-01T09:33:22.712395Z",
+      "ts_start": "2016-07-29T13:26:24.525832Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-08-01T09:30:09.037383Z--2016-08-01T09:33:22.712424Z.mkv",
+      "id": 13,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-07-29T13:26:24.526198Z--2016-07-29T13:32:04.370881Z.mkv",
+      "ts_end": "2016-08-01T09:33:22.712424Z",
+      "ts_start": "2016-07-29T13:26:24.526198Z"
+    },
+    "stable": true,
+    "ts_end": "2016-08-01T09:33:22.712424Z",
+    "ts_start": "2016-07-29T13:26:24.525832Z"
+  },
+  {
+    "id": 16,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-08-01T09:50:35.176821Z--2016-08-01T09:51:31.983360Z.mkv",
+      "id": 15,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-08-01T09:39:14.820484Z--2016-08-01T09:44:54.664688Z.mkv",
+      "ts_end": "2016-08-01T09:51:31.983360Z",
+      "ts_start": "2016-08-01T09:39:14.820484Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-08-01T09:50:35.177105Z--2016-08-01T09:51:31.982887Z.mkv",
+      "id": 14,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-08-01T09:39:14.818098Z--2016-08-01T09:44:54.667457Z.mkv",
+      "ts_end": "2016-08-01T09:51:31.982887Z",
+      "ts_start": "2016-08-01T09:39:14.818098Z"
+    },
+    "stable": true,
+    "ts_end": "2016-08-01T09:51:31.983360Z",
+    "ts_start": "2016-08-01T09:39:14.818098Z"
+  },
+  {
+    "id": 17,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-08-03T10:46:25.848494Z--2016-08-03T10:51:51.077432Z.mkv",
+      "id": 16,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-08-01T09:54:11.880642Z--2016-08-01T09:59:51.724688Z.mkv",
+      "ts_end": "2016-08-03T10:51:51.077432Z",
+      "ts_start": "2016-08-01T09:54:11.880642Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-08-03T10:46:25.848548Z--2016-08-03T10:51:51.077471Z.mkv",
+      "id": 15,
+      "info": "ecc stable",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-08-01T09:54:11.878237Z--2016-08-01T09:59:51.724774Z.mkv",
+      "ts_end": "2016-08-03T10:51:51.077471Z",
+      "ts_start": "2016-08-01T09:54:11.878237Z"
+    },
+    "stable": true,
+    "ts_end": "2016-08-03T10:51:51.077471Z",
+    "ts_start": "2016-08-01T09:54:11.878237Z"
+  },
+  {
+    "id": 18,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-08-03T10:56:32.366671Z--2016-08-03T11:02:12.210530Z.mkv",
+      "info": "closest video",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-08-03T10:56:32.366671Z--2016-08-03T11:02:12.210530Z.mkv",
+      "ts_end": "2016-08-03T11:02:12.210530Z",
+      "ts_start": "2016-08-03T10:56:32.366671Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-08-03T10:56:32.032477Z--2016-08-03T11:02:11.878831Z.mkv",
+      "id": 16,
+      "info": "ecc possible movement",
+      "stable": false,
+      "start_video_name": "Cam_1_2016-08-03T10:56:32.032477Z--2016-08-03T11:02:11.878831Z.mkv",
+      "ts_end": "2016-08-03T11:02:11.878831Z",
+      "ts_start": "2016-08-03T10:56:32.032477Z"
+    },
+    "stable": false,
+    "ts_end": "2016-08-03T11:02:12.210530Z",
+    "ts_start": "2016-08-03T10:56:32.032477Z"
+  },
+  {
+    "id": 19,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-08-03T11:14:10.077586Z--2016-08-03T11:17:04.485231Z.mkv",
+      "info": "closest video",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-08-03T11:02:12.547517Z--2016-08-03T11:06:49.270713Z.mkv",
+      "ts_end": "2016-08-03T11:17:04.485231Z",
+      "ts_start": "2016-08-03T11:02:12.547517Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-08-03T11:14:10.077634Z--2016-08-03T11:17:04.485290Z.mkv",
+      "id": 17,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-08-03T11:02:12.211250Z--2016-08-03T11:06:49.270722Z.mkv",
+      "ts_end": "2016-08-03T11:17:04.485290Z",
+      "ts_start": "2016-08-03T11:02:12.211250Z"
+    },
+    "stable": true,
+    "ts_end": "2016-08-03T11:17:04.485290Z",
+    "ts_start": "2016-08-03T11:02:12.211250Z"
+  },
+  {
+    "id": 20,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-08-05T10:39:22.492969Z--2016-08-05T10:40:20.628756Z.mkv",
+      "id": 17,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-08-03T13:11:49.717921Z--2016-08-03T13:17:29.562534Z.mkv",
+      "ts_end": "2016-08-05T10:40:20.628756Z",
+      "ts_start": "2016-08-03T13:11:49.717921Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-08-05T10:39:06.546146Z--2016-08-05T10:40:20.628653Z.mkv",
+      "id": 18,
+      "info": "ecc stable",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-08-03T13:11:48.360014Z--2016-08-03T13:17:28.233244Z.mkv",
+      "ts_end": "2016-08-05T10:40:20.628653Z",
+      "ts_start": "2016-08-03T13:11:48.360014Z"
+    },
+    "stable": true,
+    "ts_end": "2016-08-05T10:40:20.628756Z",
+    "ts_start": "2016-08-03T13:11:48.360014Z"
+  },
+  {
+    "id": 21,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-08-05T10:46:53.832438Z--2016-08-05T10:52:33.676470Z.mkv",
+      "info": "closest video",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-08-05T10:46:53.832438Z--2016-08-05T10:52:33.676470Z.mkv",
+      "ts_end": "2016-08-05T10:52:33.676470Z",
+      "ts_start": "2016-08-05T10:46:53.832438Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-08-05T10:46:53.830115Z--2016-08-05T10:52:33.676588Z.mkv",
+      "id": 19,
+      "info": "ecc possible movement",
+      "stable": false,
+      "start_video_name": "Cam_1_2016-08-05T10:46:53.830115Z--2016-08-05T10:52:33.676588Z.mkv",
+      "ts_end": "2016-08-05T10:52:33.676588Z",
+      "ts_start": "2016-08-05T10:46:53.830115Z"
+    },
+    "stable": false,
+    "ts_end": "2016-08-05T10:52:33.676588Z",
+    "ts_start": "2016-08-05T10:46:53.830115Z"
+  },
+  {
+    "id": 22,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-08-19T07:49:42.492044Z--2016-08-19T07:55:22.337571Z.mkv",
+      "info": "closest video",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-08-05T10:52:34.008648Z--2016-08-05T10:58:13.856066Z.mkv",
+      "ts_end": "2016-08-19T07:55:22.337571Z",
+      "ts_start": "2016-08-05T10:52:34.008648Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-08-19T07:49:42.491908Z--2016-08-19T07:55:22.337780Z.mkv",
+      "id": 20,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-08-05T10:52:34.009490Z--2016-08-05T10:58:13.855965Z.mkv",
+      "ts_end": "2016-08-19T07:55:22.337780Z",
+      "ts_start": "2016-08-05T10:52:34.009490Z"
+    },
+    "stable": true,
+    "ts_end": "2016-08-19T07:55:22.337780Z",
+    "ts_start": "2016-08-05T10:52:34.008648Z"
+  },
+  {
+    "id": 23,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-08-21T16:31:40.875168Z--2016-08-21T16:35:50.030605Z.mkv",
+      "id": 18,
+      "info": "manuell connected",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-08-19T07:55:22.670683Z--2016-08-19T08:01:02.517340Z.mkv",
+      "ts_end": "2016-08-21T16:35:50.030605Z",
+      "ts_start": "2016-08-19T07:55:22.670683Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-08-21T16:31:41.208897Z--2016-08-21T16:35:50.030577Z.mkv",
+      "info": "closest video",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-08-19T07:55:22.671345Z--2016-08-19T08:01:02.517347Z.mkv",
+      "ts_end": "2016-08-21T16:35:50.030577Z",
+      "ts_start": "2016-08-19T07:55:22.671345Z"
+    },
+    "stable": true,
+    "ts_end": "2016-08-21T16:35:50.030605Z",
+    "ts_start": "2016-08-19T07:55:22.670683Z"
+  },
+  {
+    "id": 24,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-09-14T14:54:12.553682Z--2016-09-14T14:55:49.225273Z.mkv",
+      "info": "closest video",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-08-21T16:46:43.637650Z--2016-08-21T16:52:23.486626Z.mkv",
+      "ts_end": "2016-09-14T14:55:49.225273Z",
+      "ts_start": "2016-08-21T16:46:43.637650Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-09-14T14:55:26.303576Z--2016-09-14T14:55:49.225310Z.mkv",
+      "id": 21,
+      "info": "last interval",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-08-21T16:46:43.637656Z--2016-08-21T16:52:23.483112Z.mkv",
+      "ts_end": "2016-09-14T14:55:49.225310Z",
+      "ts_start": "2016-08-21T16:46:43.637656Z"
+    },
+    "stable": true,
+    "ts_end": "2016-09-14T14:55:49.225310Z",
+    "ts_start": "2016-08-21T16:46:43.637650Z"
+  },
+  {
+    "id": 25,
+    "left": {
+      "cam_id": 0,
+      "end_video_name": "Cam_0_2016-09-19T08:40:12.278788Z--2016-09-19T08:45:52.125778Z.mkv",
+      "id": 19,
+      "info": "last interval",
+      "stable": true,
+      "start_video_name": "Cam_0_2016-09-14T15:19:20.096810Z--2016-09-14T15:24:59.943131Z.mkv",
+      "ts_end": "2016-09-19T08:45:52.125778Z",
+      "ts_start": "2016-09-14T15:19:20.096810Z"
+    },
+    "right": {
+      "cam_id": 1,
+      "end_video_name": "Cam_1_2016-09-19T08:40:14.275312Z--2016-09-19T08:45:54.119255Z.mkv",
+      "info": "closest video",
+      "stable": true,
+      "start_video_name": "Cam_1_2016-09-14T15:19:20.096777Z--2016-09-14T15:24:59.943995Z.mkv",
+      "ts_end": "2016-09-19T08:45:54.119255Z",
+      "ts_start": "2016-09-14T15:19:20.096777Z"
+    },
+    "stable": true,
+    "ts_end": "2016-09-19T08:45:54.119255Z",
+    "ts_start": "2016-09-14T15:19:20.096777Z"
+  }
+]

@@ -1,0 +1,35 @@
+.vis-item.even-interval{
+  color: white;
+  border-color: #9e9e9e;
+  background-color: #9e9e9e;
+}
+
+.vis-item.odd-interval{
+  color: white;
+  border-color: #000000;
+  background-color: #000000;
+}
+
+.vis-item.stable-interval{
+  color: white;
+  border-color: #048f8f;
+  background-color: #00cbcb;
+}
+
+.vis-item.unstable-interval{
+  color: white;
+  border-color: #770015;
+  background-color: #ff002d;
+}
+
+.vis-item.possible-unstable-interval{
+  color: white;
+  border-color: #9100a3;
+  background-color: #e300ff;
+}
+
+.vis-item.vis-selected{
+  border-color: #FFC200;
+  background-color: #FFF785;
+  color: black;
+}
