@@ -128,7 +128,7 @@ var createOneSideFromIntervalPair = function(item, id, group, side){
   new_item["start"] = start
   new_item["end"] = end
   new_item["group"] = group
-  new_item["className"] = 'stable-interval';
+  new_item["className"] = 'stable-interval-one-cam';
   if (! item[side]["stable"]){
     new_item["className"] = 'unstable-interval';
   }

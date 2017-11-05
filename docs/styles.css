@@ -16,6 +16,12 @@
   background-color: #00cbcb;
 }
 
+.vis-item.stable-interval-one-cam{
+  color: white;
+  border-color: #048f8f;
+  background-color: #009898;
+}
+
 .vis-item.unstable-interval{
   color: white;
   border-color: #770015;
