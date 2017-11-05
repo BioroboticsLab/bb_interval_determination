@@ -30,14 +30,14 @@
     });
 
     var JSON_PATH_MAINTANCE = "maintenance_info.json";
-    var JSON_PATH_INTERVAL_PAIRS_01 = '06_Cam_01_intervals_pair.json';
-    var JSON_PATH_INTERVAL_PAIRS_23 = '06_Cam_23_intervals_pair.json';
+    var JSON_PATH_INTERVAL_PAIRS_01 = './07_validation/07_Cam_01_intervals_pair_validation.json';
+    var JSON_PATH_INTERVAL_PAIRS_23 = './07_validation/07_Cam_23_intervals_pair_validation.json';
 
     var PATHS_TIME = []
     var PATHS_ECC_STABLE_JOIN_MAN = []
     for (let i = 0; i < 4; i++) {
-      PATHS_ECC_STABLE_JOIN_MAN.push(`05c_Cam_${i}_intervals_ecc_stable_join_man.json`);
-      PATHS_TIME.push(`Cam_${i}_intervals_time.json`);
+      PATHS_ECC_STABLE_JOIN_MAN.push(`./05_get_stable_intervals/05c_Cam_${i}_intervals_ecc_stable_join_man.json`);
+      PATHS_TIME.push(`./01_create_video_timeline_json/Cam_${i}_intervals_time.json`);
     }
 
     var dsply_json = [];
